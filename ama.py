@@ -18,4 +18,4 @@ print('Reddit client is watching and listening for new submissions!')
 webhook = Webhook.from_url(WEBHOOK_URL, adapter=RequestsWebhookAdapter())
 
 for comment in reddit.redditor("porter_robinson").stream.comments(skip_existing=True):
-    webhook.send("/u/{}: {}\n\n/u/{}: {}".format(comment.parent().author, comment.parent().body, comment.author, comment.body))
+    webhook.send("/u/{}: {}\n\n/u/{}: {}\n\nhttps://reddit.com{}".format(comment.parent().author, comment.parent().body, comment.author, comment.body, comment.permalink))
